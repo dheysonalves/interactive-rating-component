@@ -18,7 +18,7 @@
 <body>
   <main class="main-card">
     <!-- Rating state start -->
-    <div class="card-rating" id="rating-state" hidden>
+    <div class="card-rating" id="rating-state">
       <img src="./images/icon-star.svg" alt="icon star" class="card-rating-star--img" />
       <div class="card-rating-description">
         <h1 class="card-rating-description--h1">
@@ -29,10 +29,10 @@
           to help us improve our offering!
         </p>
       </div>
-      <form class="card-rating-form" role="form">
+      <form class="card-rating-form" role="form" id="card-rating-form">
         <div class="card-flex">
           <div class="form-group">
-            <input type="radio" id="one" name="rating" value="1">
+            <input type="radio" id="one" name="rating" value="1" required>
             <label for="one">1</label>
           </div>
           <div class="form-group">
@@ -54,20 +54,18 @@
         </div>
 
         <div class="form-submit">
-          <input type="submit" value="Submit" />
+          <input type="submit" value="Submit" id="button-submit-form" />
         </div>
       </form>
     </div>
     <!-- Rating state end -->
 
     <!-- Thank you state start -->
-    <div class="card-rating card-state-flex" id="state-start">
-      <img src="./images/illustration-thank-you.svg" alt="Thank you illustration" class="state-card-illustration--img" />
+    <div class="card-rating card-state-flex card-none" id="state-start">
+      <img src="./images/illustration-thank-you.svg" alt="Thank you illustration"
+        class="state-card-illustration--img" />
       <div class="selected-state">
-        <span class="selected-state--span">
-          You selected
-          <!-- Add rating here --> out of 5
-        </span>
+        <span class="selected-state--span" id="selected-state-data"></span>
       </div>
       <div class="state-card-description">
         <h2 class="state-card-description--h2">
@@ -81,7 +79,44 @@
     </div>
     <!-- Thank you state end -->
   </main>
+  <script>
+    const $rating_state = document.querySelector('#rating-state');
+    const $active_state_card = document.querySelector('#state-start');
+    const $submit_form = document.querySelector('#card-rating-form');
+    const $button_form = document.querySelector('#button-submit-form');
+    const $is_radio_checked = document.querySelector('input[type=radio][name="rating"]');
+    const $all_radio = document.querySelectorAll('input[type=radio][name="rating"]');
+    const $selected_data = document.querySelector('#selected-state-data');
 
+    if (!$is_radio_checked.checked) {
+      $button_form.disabled = true;
+    }
+
+    for (const radio of $all_radio) {
+      radio.onclick = (e) => {
+        $button_form.disabled = false;
+      }
+    }
+
+    $is_radio_checked.addEventListener('click', function (event) {
+      console.log('ok')
+      $button_form.disabled = false;
+    })
+
+    $submit_form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      new FormData($submit_form);
+      $rating_state.classList.add("card-none");
+      $active_state_card.classList.remove("card-none");
+    });
+
+    $submit_form.addEventListener("formdata", event => {
+      const data = event.formData;
+      const selected = [...data.values()]
+      $selected_data.append(`You selected ${selected} out of 5`)
+    });
+
+  </script>
 </body>
 
 </html>

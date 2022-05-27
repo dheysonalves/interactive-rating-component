@@ -208,3 +208,8 @@ body {
 	line-height: 1.4em;
 	margin: 0 0.3em 1em 0.3em;
 }
+
+.card-none {
+	display: none;
+}
+
