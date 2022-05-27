@@ -32,7 +32,7 @@
       <form class="card-rating-form" role="form" id="card-rating-form">
         <div class="card-flex">
           <div class="form-group">
-            <input type="radio" id="one" name="rating" value="1" required>
+            <input type="radio" id="one" name="rating" value="1">
             <label for="one">1</label>
           </div>
           <div class="form-group">
@@ -97,11 +97,6 @@
         $button_form.disabled = false;
       }
     }
-
-    $is_radio_checked.addEventListener('click', function (event) {
-      console.log('ok')
-      $button_form.disabled = false;
-    })
 
     $submit_form.addEventListener("submit", function (event) {
       event.preventDefault();
