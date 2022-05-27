@@ -75,7 +75,7 @@ body {
 
 .card-rating-description-p {
 	color: var(--clr-neutral-light-grey);
-	font-size: clamp(0.4rem, 1vw + 1rem, 0.95rem);
+	font-size: clamp(0.4rem, 2.5vw, 1.2rem);
 	font-weight: var(--fw-400);
 	line-height: 1.5em;
 }
@@ -131,7 +131,7 @@ body {
 	color: var(--clr-neutral-white);
 	text-transform: uppercase;
 	letter-spacing: 0.1rem;
-	font-size: 1rem;
+	font-size: clamp(0.8rem, 2.5vw, 1.2rem);
 	border: none;
 	width: 100%;
 	padding: 1em;
@@ -204,7 +204,7 @@ body {
 .state-card-description--p {
 	color: var(--clr-neutral-medium-grey);
 	font-weight: var(--fw-400);
-	font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+	font-size: clamp(0.9rem, 2.5vw, 1.23rem);
 	line-height: 1.4em;
 	margin: 0 0.3em 1em 0.3em;
 }
